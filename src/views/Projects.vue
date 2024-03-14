@@ -8,7 +8,7 @@
                 action="demo" 
                 cardTitle="Portfolio" 
                 description="Single Page Application portfolio made with Vue.js and Typescript"
-                srcImg="src/assets/img/portfolio.png"
+                :srcImg="portfolioImg"
                 altImg="Portfolio frame" 
                 :imgTechUrl="[
                             'src/assets/img/vue.svg',
@@ -43,6 +43,8 @@
 <script setup lang="ts">
 
 import CardCommon from '@/components/CardCommon.vue';
+
+import { portfolioImg } from '@/util/assetHandling';
 
 </script>
 

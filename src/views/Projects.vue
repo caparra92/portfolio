@@ -11,10 +11,10 @@
                 :srcImg="portfolioImg"
                 altImg="Portfolio frame" 
                 :imgTechUrl="[
-                            'src/assets/img/vue.svg',
-                            'src/assets/img/ts.svg',
-                            'src/assets/img/html5.svg',
-                            'src/assets/img/css3.svg'
+                            vueImg,
+                            tsImg,
+                            html5Img,
+                            css3Img
                             ]" 
                 urlProject="https://parr0124-landing001.netlify.app"
             />
@@ -22,18 +22,18 @@
                 action="demo" 
                 cardTitle="Landing Template" 
                 description="Responsive layout for mobile, tablet and desktop devices"
-                srcImg="src\assets\img\pc-landing.png" 
+                :srcImg="pcLandingImg"
                 altImg="Landing page"
-                :imgTechUrl="['src/assets/img/html5.svg','src/assets/img/css3.svg']"
+                :imgTechUrl="[html5Img,css3Img]"
                 urlProject="https://parr0124-landing001.netlify.app"
             />
             <CardCommon
                 action="code" 
                 cardTitle="TO DO Terminal app" 
                 description="TO DO command line application made with node.js and yargs"
-                srcImg="src\assets\img\yargs.png" 
+                :srcImg="yargsImg" 
                 altImg="TO DO command line"
-                :imgTechUrl="['src/assets/img/js.svg','src/assets/img/node.svg']"
+                :imgTechUrl="[jsImg,nodeImg]"
                 urlProject="https://github.com/caparra92/tareas-console"
             />
         </div>
@@ -44,7 +44,17 @@
 
 import CardCommon from '@/components/CardCommon.vue';
 
-import { portfolioImg } from '@/util/assetHandling';
+import { 
+        css3Img, 
+        html5Img, 
+        jsImg, 
+        nodeImg, 
+        pcLandingImg, 
+        portfolioImg, 
+        tsImg, 
+        vueImg, 
+        yargsImg 
+    } from '@/util/assetHandling';
 
 </script>
 

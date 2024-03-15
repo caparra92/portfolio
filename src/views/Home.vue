@@ -2,6 +2,7 @@
     <div class="u-presentation">
         <div class="u-title"><h1>Full Stack Web Developer</h1></div>
         <h2>Skills</h2>
+        <!-- <div class="u-images-bg"></div> -->
         <div class="u-images" :class="{ 'u-social-dark': dark.darkTrigger }">
             <img src="@/assets/img/html5.svg" alt="html logo">
             <img src="@/assets/img/css3.svg" alt="css logo">
@@ -29,6 +30,16 @@ const dark = useDarkThemeTrigger();
     text-align: center;
 }
 
+/* .u-images-bg {
+    width: 80%;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    left: 0%;
+    background: linear-gradient(-45deg, var(--color-link-active) 50%, var(--color-border) 50%);
+    filter: blur(44px);
+} */
+
 .u-presentation .u-title {
     display: flex;
     justify-content: center;
@@ -39,6 +50,23 @@ const dark = useDarkThemeTrigger();
     font-weight: bold;
     font-size: 3rem;
     margin-top: 3rem;
+    /* mix-blend-mode: multiply; */
+    position: relative;
+    background: var(--color-background);
+}
+
+.u-presentation h1:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to right, var(--color-link-active), var(--color-border));
+    /* background: linear-gradient(-45deg, var(--color-link-active) 50%, var(--color-border) 50%); */
+    filter: blur(44px); 
+    mix-blend-mode: screen;
 }
 
 .u-images {

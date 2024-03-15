@@ -57,6 +57,9 @@
 
     --color-heading: var(--vt-c-text-dark-1);
     --color-text: var(--vt-c-text-dark-2);
+    --color-input: var(--vt-c-divider-dark-1);
+    --color-link-hover: var(--vt-c-text-dark-2);
+    --color-link-active: var(--vt-c-text-dark-2);
   }
 }
 

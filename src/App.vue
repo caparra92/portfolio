@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 import HeaderCommon  from './components/HeaderCommon.vue'
 import FooterCommon from './components/FooterCommon.vue'
+
 </script>
 
 <template>

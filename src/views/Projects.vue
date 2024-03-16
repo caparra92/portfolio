@@ -1,5 +1,5 @@
 <template>
-    <div class="u-projects">
+    <div class="u-projects" v-if="pageIsLoaded">
         <div class="u-title">
             <h1>projects</h1>
         </div>
@@ -38,11 +38,16 @@
             />
         </div>
     </div>
+    <Loader v-else></Loader>
 </template>
 
 <script setup lang="ts">
 
+import { ref, onMounted } from 'vue';
 import CardCommon from '@/components/CardCommon.vue';
+import Loader from '@/components/Loader.vue';
+
+import { useRoute } from 'vue-router';
 
 import { 
         css3Img, 
@@ -55,6 +60,14 @@ import {
         vueImg, 
         yargsImg 
     } from '@/util/assetHandling';
+    
+const pageIsLoaded = ref(false);
+
+const route = useRoute();
+
+onMounted(() => {
+    pageIsLoaded.value = true;
+});
 
 </script>
 

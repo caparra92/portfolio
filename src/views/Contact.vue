@@ -1,5 +1,5 @@
 <template>
-    <div class="u-contact">
+    <div class="u-contact" v-if="pageIsLoaded">
         <div class="u-title">
             <h1>contact</h1>
         </div>
@@ -19,22 +19,29 @@
             </div>
         </div>
     </div>
+    <Loader v-else></Loader>
 </template>
 <script setup lang="ts">
 
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
 import InputCommon from '@/components/InputCommon.vue';
 import TextAreaCommon from '@/components/TextAreaCommon.vue';
+import Loader from '@/components/Loader.vue';
 import Map from '@/components/Map.vue';
 import { useSendEmail } from '@/stores/sendEmail';
 
+const pageIsLoaded = ref(false);
 const sendEmail = useSendEmail();
 const form = ref({
       name: '',
       email: '',
       message: ''
     });
+
+onMounted(() => {
+    pageIsLoaded.value = true;
+});
 
 const sendEmailMessage = async() => {
     try {

@@ -5,7 +5,7 @@
         </div>
         <div class="u-container">
             <div class="u-form-container">
-                <form @submit.prevent="sendEmail">
+                <form @submit.prevent="sendEmailMessage">
                     <InputCommon type="text" label="Name" v-model="form.name"></InputCommon>
                     <InputCommon type="email" label="Email" v-model="form.email"></InputCommon>
                     <TextAreaCommon label="Message" col="23" row="10" v-model="form.message"></TextAreaCommon>
@@ -27,15 +27,36 @@ import { ref } from 'vue';
 import InputCommon from '@/components/InputCommon.vue';
 import TextAreaCommon from '@/components/TextAreaCommon.vue';
 import Map from '@/components/Map.vue';
+import { useSendEmail } from '@/stores/sendEmail';
 
+const sendEmail = useSendEmail();
 const form = ref({
       name: '',
       email: '',
       message: ''
     });
 
-const sendEmail = () => {
-    console.log(form.value);
+const sendEmailMessage = async() => {
+    try {
+        
+        if(form.value.name === ''  || form.value.email === '' || form.value.message === '') {
+          console.log(`name, description and category are required`);
+          return;
+        }
+        console.log(form.value)
+        const data = await sendEmail.sendEmail(form.value.name, form.value.email, form.value.message);
+        console.log(data)
+        clearForm();
+      } catch (error) {
+        console.log(error);
+      }
+      
+}
+ 
+const clearForm = () => {
+    form.value.name = '';
+    form.value.email = '';
+    form.value.message = '';
 }
 
 </script>

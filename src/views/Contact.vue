@@ -9,6 +9,9 @@
                     <InputCommon type="text" label="Name" v-model="form.name"></InputCommon>
                     <InputCommon type="email" label="Email" v-model="form.email"></InputCommon>
                     <TextAreaCommon label="Message" col="23" row="10" v-model="form.message"></TextAreaCommon>
+                    <!-- <template v-if="validationMsg.length > 0" v-for="valMsg in validationMsg">
+                        <span>{{ valMsg.msg }}</span>
+                    </template> -->
                     <div class="u-btn-container">
                         <button class="u-btn-send-message">Send</button>
                     </div>
@@ -39,25 +42,21 @@ const form = ref({
       message: ''
     });
 
+const validationMsg = ref([]);
+
 onMounted(() => {
     pageIsLoaded.value = true;
 });
 
 const sendEmailMessage = async() => {
     try {
-        
-        if(form.value.name === ''  || form.value.email === '' || form.value.message === '') {
-          console.log(`name, description and category are required`);
-          return;
-        }
         console.log(form.value)
-        const data = await sendEmail.sendEmail(form.value.name, form.value.email, form.value.message);
-        console.log(data)
+        const { errors } = await sendEmail.sendEmail(form.value.name, form.value.email, form.value.message);
+        validationMsg.value = errors;
         clearForm();
       } catch (error) {
         console.log(error);
-      }
-      
+      } 
 }
  
 const clearForm = () => {

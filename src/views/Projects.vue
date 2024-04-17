@@ -5,7 +5,7 @@
         </div>
         <div class="u-card-projects">
             <CardCommon
-                action="demo" 
+                action="code" 
                 cardTitle="Portfolio" 
                 description="Single Page Application portfolio made with Vue.js and Typescript"
                 :srcImg="portfolioImg"
@@ -16,7 +16,7 @@
                             html5Img,
                             css3Img
                             ]" 
-                urlProject="https://parr0124-landing001.netlify.app"
+                urlProject="https://github.com/caparra92/portfolio"
             />
             <CardCommon
                 action="demo" 

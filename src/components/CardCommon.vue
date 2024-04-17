@@ -145,6 +145,14 @@ const dark = useDarkThemeTrigger();
         gap: 1rem;
         padding: 0 10px;
     }
+
+    .u-btn-demo {
+        width: 100%;
+    }
+
+    .u-btn-demo:hover {
+        transform: scale(1);
+    }
 }
 
 </style>

@@ -15,20 +15,6 @@
                 I’m very passionate with sports. I practice capoeira and jiu-jitsu few years ago and I really enjoy teaching
                 and sharing all I have learnt with the tech community, you can follow me or check my blog posts out on medium.</p>
         </div>
-        <div class="u-social" :class="{ 'u-social-dark': dark.darkTrigger }">
-            <a href="https://github.com/caparra92" target="_blank">
-                <img src="@/assets/img/github.svg" alt="github logo">
-            </a>
-            <a href="https://linkedin.com/in/parra-camilo" target="_blank">
-                <img src="@/assets/img/linkedin.svg" alt="linkedin logo">
-            </a>
-            <a href="https://www.instagram.com/camilo_parra_galo" target="_blank">
-                <img src="@/assets/img/instagram.svg" alt="instagram logo">
-            </a>
-            <a href="https://medium.com/@caparra92" target="_blank">
-                <img src="@/assets/img/medium.svg" alt="medium logo">
-            </a>
-        </div>
     </div>
 </template>
 <script setup lang="ts">
@@ -75,31 +61,6 @@ const dark = useDarkThemeTrigger();
     text-align: center;
     width: 80%;
     margin: 2rem auto;
-}
-
-.u-social {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-}
-
-.u-social a {
-    text-decoration: none;
-    outline: none;
-    transition: all .3s ease;
-}
-
-.u-social a:hover {
-    background-color: transparent;
-    transform: scale(1.1);
-}
-
-.u-social img {
-    width: 50px;
-}
-
-.u-social-dark {
-    filter: invert(1);
 }
 
 @media screen and (max-width: 768px) {

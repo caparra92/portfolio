@@ -9,9 +9,9 @@
                     <InputCommon type="text" label="Name" v-model="form.name"></InputCommon>
                     <InputCommon type="email" label="Email" v-model="form.email"></InputCommon>
                     <TextAreaCommon label="Message" col="23" row="10" v-model="form.message"></TextAreaCommon>
-                    <!-- <template v-if="validationMsg.length > 0" v-for="valMsg in validationMsg">
-                        <span>{{ valMsg.msg }}</span>
-                    </template> -->
+                    <template class="u-errors">
+                        <span v-for="valMsg in validationMsg" :key="valMsg.msg">{{ valMsg.msg }}</span>
+                    </template>
                     <div class="u-btn-container">
                         <button class="u-btn-send-message">Send</button>
                     </div>
@@ -34,6 +34,11 @@ import Loader from '@/components/Loader.vue';
 import Map from '@/components/Map.vue';
 import { useSendEmail } from '@/stores/sendEmail';
 
+interface validationError {
+    type: string,
+    msg: string
+}
+
 const pageIsLoaded = ref(false);
 const sendEmail = useSendEmail();
 const form = ref({
@@ -42,7 +47,7 @@ const form = ref({
       message: ''
     });
 
-const validationMsg = ref([]);
+const validationMsg = ref<validationError[]>([]);
 
 onMounted(() => {
     pageIsLoaded.value = true;
@@ -50,12 +55,10 @@ onMounted(() => {
 
 const sendEmailMessage = async() => {
     try {
-        console.log(form.value)
         const { errors } = await sendEmail.sendEmail(form.value.name, form.value.email, form.value.message);
-        validationMsg.value = errors;
-        clearForm();
+        errors.length > 0 ? validationMsg.value = errors : clearForm();
       } catch (error) {
-        console.log(error);
+        throw new Error(`Error: ${error}`);
       } 
 }
  
@@ -117,6 +120,14 @@ const clearForm = () => {
 
 .u-map-container {
     padding: 8px;
+}
+
+.u-errors {
+    display: flex;
+    font-size: .8rem;
+    flex-direction: column;
+    padding: 1rem;
+    color: var(--color-warning);
 }
 
 @media screen and (max-width: 768px) {

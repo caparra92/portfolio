@@ -5,7 +5,7 @@
         </div>
         <div class="u-card-projects">
             <CardCommon
-                action="code" 
+                :action="'code'" 
                 cardTitle="Portfolio" 
                 description="Single Page Application portfolio made with Vue.js and Typescript"
                 :srcImg="portfolioImg"
@@ -16,25 +16,25 @@
                             html5Img,
                             css3Img
                             ]" 
-                urlProject="https://github.com/caparra92/portfolio"
+                :urlProject="'https://github.com/caparra92/portfolio'"
             />
             <CardCommon
-                action="demo" 
+                :action="['demo','code']" 
                 cardTitle="Landing Template" 
                 description="Responsive layout for mobile, tablet and desktop devices"
                 :srcImg="landingImg"
                 altImg="Landing page"
                 :imgTechUrl="[html5Img,css3Img]"
-                urlProject="https://parr0124-landing001.netlify.app"
+                :urlProject="['https://parr0124-landing001.netlify.app','https://parr0124-landing001.netlify.app']"
             />
             <CardCommon
-                action="code" 
+                :action="'code'"
                 cardTitle="TO DO Terminal app" 
                 description="TO DO command line application made with node.js and yargs"
                 :srcImg="yargsImg" 
                 altImg="TO DO command line"
                 :imgTechUrl="[jsImg,nodeImg]"
-                urlProject="https://github.com/caparra92/tareas-console"
+                :urlProject="'https://github.com/caparra92/tareas-console'"
             />
         </div>
     </div>

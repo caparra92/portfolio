@@ -43,5 +43,13 @@ const props = defineProps({
     resize: none;
     background-color: var(--color-input);
     height: 5rem;
+    font-family: Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
   }
 </style>

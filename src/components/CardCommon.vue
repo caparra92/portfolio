@@ -15,8 +15,11 @@
                     <ImgCommon :srcImg="img" :altImg="alt"/>
                 </template>
             </div>
-            <div class="u-card-action">
-                <a :href="urlProject" class="u-btn-demo" target="_blank">{{action}}</a>
+                <div class="u-card-action" v-if="Array.isArray(action)">
+                    <a v-for="(act, index) in action" :key="index" :href="urlProject[index]" class="u-btn-action" target="_blank">{{act}}</a>
+                </div>
+            <div v-else class="u-card-action">
+                <a :href="urlProject" class="u-btn-action" target="_blank">{{action}}</a>
             </div>
         </div>
     </div>
@@ -34,8 +37,8 @@ const dark = useDarkThemeTrigger();
         srcImg?: string,
         alt?: string,
         imgTechUrl?: Array<string>,
-        urlProject?: string,
-        action?: string
+        urlProject: Array<string> | string,
+        action?: Array<string> | string
     }>()
 
 </script>
@@ -93,9 +96,11 @@ const dark = useDarkThemeTrigger();
 
 .u-card-action {
     padding: 10px;
+    display: flex;
+    gap: 1rem;
 }
 
-.u-btn-demo {
+.u-btn-action {
     display: inline-block;
     background-color: var(--color-link-active);
     color: var(--color-background);
@@ -110,7 +115,7 @@ const dark = useDarkThemeTrigger();
     transition: all .3s ease;
 }
 
-.u-btn-demo:hover {
+.u-btn-action:hover {
     background-color: var(--color-btn-hover);
     color: var(--color-background-soft);
     transform: scale(1.1);
@@ -147,11 +152,11 @@ const dark = useDarkThemeTrigger();
         padding: 0 10px;
     }
 
-    .u-btn-demo {
+    .u-btn-action {
         width: 100%;
     }
 
-    .u-btn-demo:hover {
+    .u-btn-action:hover {
         transform: scale(1);
     }
 }

@@ -10,9 +10,9 @@ import mediumImg from '@/assets/img/medium.svg';
 import nodeImg from '@/assets/img/node.svg';
 import tsImg from '@/assets/img/ts.svg';
 import vueImg from '@/assets/img/vue.svg';
-import pcLandingImg from '@/assets/img/pc-landing.png';
-import portfolioImg from '@/assets/img/portfolio.png';
-import yargsImg from '@/assets/img/yargs.png';
+import landingImg from '@/assets/img/landing.svg';
+import portfolioImg from '@/assets/img/portfolio.svg';
+import yargsImg from '@/assets/img/yargs.svg';
 
 export {
     cSharpImg,
@@ -27,7 +27,7 @@ export {
     nodeImg,
     tsImg,
     vueImg,
-    pcLandingImg,
+    landingImg,
     portfolioImg,
     yargsImg
 }

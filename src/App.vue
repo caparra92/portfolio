@@ -1,23 +1,13 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
 import { RouterView } from 'vue-router';
-import Loader from '@/components/Loader.vue';
 import HeaderCommon  from './components/HeaderCommon.vue'
 import FooterCommon from './components/FooterCommon.vue'
-
-
-const pageIsLoaded = ref(false);
-
-onMounted(() => {
-    pageIsLoaded.value = true;
-});
 </script>
 
 <template>
   <HeaderCommon />
   <Transition name="slide-fade">
-    <RouterView v-if="pageIsLoaded"/>
-    <Loader v-else></Loader>
+    <RouterView/>
   </Transition>
   <FooterCommon />
 </template>

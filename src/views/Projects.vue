@@ -1,5 +1,5 @@
 <template>
-    <div class="u-projects" v-if="pageIsLoaded">
+    <div class="u-projects">
         <div class="u-title">
             <h1>projects</h1>
         </div>
@@ -22,7 +22,7 @@
                 action="demo" 
                 cardTitle="Landing Template" 
                 description="Responsive layout for mobile, tablet and desktop devices"
-                :srcImg="pcLandingImg"
+                :srcImg="landingImg"
                 altImg="Landing page"
                 :imgTechUrl="[html5Img,css3Img]"
                 urlProject="https://parr0124-landing001.netlify.app"
@@ -38,7 +38,6 @@
             />
         </div>
     </div>
-    <Loader v-else></Loader>
 </template>
 
 <script setup lang="ts">
@@ -53,8 +52,8 @@ import {
         css3Img, 
         html5Img, 
         jsImg, 
-        nodeImg, 
-        pcLandingImg, 
+        nodeImg,
+        landingImg,  
         portfolioImg, 
         tsImg, 
         vueImg, 

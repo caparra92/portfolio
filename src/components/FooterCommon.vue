@@ -30,6 +30,7 @@ const dark = useDarkThemeTrigger();
     align-items: center;
     gap: 1rem;
     padding: 2rem;
+    margin-top: 20px;
 }
 
 .footer span {

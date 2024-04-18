@@ -53,6 +53,7 @@ const dark = useDarkThemeTrigger();
 .u-card-image {
     border-right: 1px solid var(--color-border);
     background-color: var(--color-btn-hover);
+    padding: 15px;
 }
 
 .u-card-image img {

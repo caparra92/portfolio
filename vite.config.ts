@@ -10,6 +10,7 @@ export default defineConfig(({mode}) => {
   return {
     define: {
       'process.env.VUE_APP_DEVBASE_URL': JSON.stringify(env.VUE_APP_DEVBASE_URL),
+      'process.env.VUE_APP_PRODBASE_URL': JSON.stringify(env.VUE_APP_PRODBASE_URL),
       'process.env.VUE_APP_VUE_ENV': JSON.stringify(env.VUE_APP_VUE_ENV)
     },
     plugins: [

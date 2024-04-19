@@ -56,13 +56,14 @@ onMounted(() => {
 const sendEmailMessage = async() => {
     try {
         const { errors } = await sendEmail.sendEmail(form.value.name, form.value.email, form.value.message);
-        errors.length > 0 ? validationMsg.value = errors : clearForm();
+        errors.length > 0 ? validationMsg.value = errors : clearValues();
       } catch (error) {
         throw new Error(`Error: ${error}`);
       } 
 }
  
-const clearForm = () => {
+const clearValues = () => {
+    validationMsg.value = [];
     form.value.name = '';
     form.value.email = '';
     form.value.message = '';

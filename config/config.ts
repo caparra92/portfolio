@@ -4,7 +4,7 @@ let baseURL: string;
 const vue_env = process.env.VUE_APP_VUE_ENV;
 
 if(vue_env !== 'development'){
-    baseURL = process.env.VUE_APP_BASE_URL as string;
+    baseURL = process.env.VUE_APP_PRODBASE_URL as string;
 } else {
     baseURL = process.env.VUE_APP_DEVBASE_URL as string;
 }

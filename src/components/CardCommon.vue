@@ -19,7 +19,7 @@
                     <a v-for="(act, index) in action" :key="index" :href="urlProject[index]" class="u-btn-action" target="_blank">{{act}}</a>
                 </div>
             <div v-else class="u-card-action">
-                <a :href="urlProject" class="u-btn-action" target="_blank">{{action}}</a>
+                <a :href="urlProject.toString()" class="u-btn-action" target="_blank">{{action}}</a>
             </div>
         </div>
     </div>

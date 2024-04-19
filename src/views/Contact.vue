@@ -23,6 +23,15 @@
         </div>
     </div>
     <Loader v-else></Loader>
+    <ModalCommon v-if="modalIsOpen" @on:close="closeModal">
+        <template v-slot:header>
+            <h2 class="u-title">Message sent</h2>
+        </template>
+        <template v-slot:body class="u-modal-body">
+            <p>Thank you for your message!</p>
+            <p>I will be in contact with you soon!</p>
+        </template>
+    </ModalCommon>
 </template>
 <script setup lang="ts">
 
@@ -30,6 +39,7 @@ import { onMounted, ref } from 'vue';
 
 import InputCommon from '@/components/InputCommon.vue';
 import TextAreaCommon from '@/components/TextAreaCommon.vue';
+import ModalCommon from '@/components/ModalCommon.vue';
 import Loader from '@/components/Loader.vue';
 import Map from '@/components/Map.vue';
 import { useSendEmail } from '@/stores/sendEmail';
@@ -40,6 +50,7 @@ interface validationError {
 }
 
 const pageIsLoaded = ref(false);
+const modalIsOpen = ref(false);
 const sendEmail = useSendEmail();
 const form = ref({
       name: '',
@@ -53,10 +64,23 @@ onMounted(() => {
     pageIsLoaded.value = true;
 });
 
+const openModal = async () => {
+        modalIsOpen.value = true;
+    }
+
+    const closeModal = () => {
+        modalIsOpen.value = false;
+    }
+
 const sendEmailMessage = async() => {
     try {
         const { errors } = await sendEmail.sendEmail(form.value.name, form.value.email, form.value.message);
-        errors.length > 0 ? validationMsg.value = errors : clearValues();
+        if (errors.length > 0) {
+            validationMsg.value = errors;
+        } else {
+            openModal();
+            clearValues();
+        } 
       } catch (error) {
         throw new Error(`Error: ${error}`);
       } 
@@ -127,8 +151,12 @@ const clearValues = () => {
     display: flex;
     font-size: .8rem;
     flex-direction: column;
-    padding: 1rem;
+    margin: 1rem;
     color: var(--color-warning);
+}
+
+.u-modal-body {
+    color: var(--color-text);
 }
 
 @media screen and (max-width: 768px) {

@@ -14,7 +14,9 @@
                 <img src="@/assets/img/medium.svg" alt="medium logo">
             </a>
         </div>
-        <span>+1 343 322 1022 <span>-</span> caparra92@gmail.com</span>
+        <div class="u-sign">
+            <span>+1 343 322 1022</span><span class="u-dash">-</span><span>caparra92@gmail.com</span>
+        </div>
     </div>
 </template>
 <script setup lang="ts">
@@ -33,8 +35,10 @@ const dark = useDarkThemeTrigger();
     margin-top: 20px;
 }
 
-.footer span {
-    text-align: center;
+.u-sign {
+    display: flex;
+    gap: .5rem;
+    justify-content: center;
 }
 
 .u-social {
@@ -44,6 +48,7 @@ const dark = useDarkThemeTrigger();
 }
 
 .u-social a {
+    filter: invert(var(--filter-invert));
     text-decoration: none;
     outline: none;
     transition: all .3s ease;
@@ -63,8 +68,13 @@ const dark = useDarkThemeTrigger();
 }
 
 @media screen and (max-width: 768px) {
-    .footer span span {
+    .u-dash {
         display: none;
+    }
+
+    .u-sign {
+        flex-direction: column;
+        align-items: center;
     }
 }
 </style>

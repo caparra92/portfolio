@@ -10,7 +10,7 @@ import { useDarkThemeTrigger } from '@/stores/darkThemeTrigger';
 
 const dark = useDarkThemeTrigger();
 
-const { darkTrigger } = storeToRefs(dark);
+const { darkTrigger, mapStyle } = storeToRefs(dark);
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2FwYXJyYTkyIiwiYSI6ImNsdG5xOHVhNjA5Z3kya280bjhzejI5MmkifQ.G4vaJdWCQVQ-nsqZzZYXqA';
 
@@ -18,7 +18,7 @@ const mapContainer = ref(null);
 
 const mapOptions = {
     container: 'mapContainer',
-    style: "mapbox://styles/mapbox/streets-v12",
+    style: mapStyle.value,
     center: [-75.75321237158144, 45.350272408333176],
     zoom: 13,
     trackResize: false

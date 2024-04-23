@@ -39,7 +39,7 @@ const slideMenu = ref();
 
 const root = ref(document.documentElement);
 const checked = ref(null);
-let dark = useDarkThemeTrigger();
+const dark = useDarkThemeTrigger();
 
 const showMenu = () => {
     showSlideMenu.value = !showSlideMenu.value;

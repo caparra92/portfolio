@@ -6,12 +6,9 @@
         <div class="u-container">
             <div class="u-form-container">
                 <form @submit.prevent="sendEmailMessage">
-                    <InputCommon type="text" label="Name" v-model="form.name"></InputCommon>
-                    <InputCommon type="email" label="Email" v-model="form.email"></InputCommon>
-                    <TextAreaCommon label="Message" col="23" row="10" v-model="form.message"></TextAreaCommon>
-                    <template class="u-errors">
-                        <span v-for="valMsg in validationMsg" :key="valMsg.msg">{{ valMsg.msg }}</span>
-                    </template>
+                    <InputCommon type="text" label="Name" v-model="form.name" :validation="validationMsg"></InputCommon>
+                    <InputCommon type="email" label="Email" v-model="form.email" :validation="validationMsg"></InputCommon>
+                    <TextAreaCommon label="Message" col="23" row="10" v-model="form.message" :validation="validationMsg"></TextAreaCommon>
                     <div class="u-btn-container">
                         <button class="u-btn-send-message">Send</button>
                     </div>
@@ -46,7 +43,10 @@ import { useSendEmail } from '@/stores/sendEmail';
 
 interface validationError {
     type: string,
-    msg: string
+    value: string,
+    msg: string,
+    path: string,
+    localtion: string
 }
 
 const pageIsLoaded = ref(false);
@@ -145,14 +145,6 @@ const clearValues = () => {
 
 .u-map-container {
     padding: 8px;
-}
-
-.u-errors {
-    display: flex;
-    font-size: .8rem;
-    flex-direction: column;
-    margin: 1rem;
-    color: var(--color-warning);
 }
 
 .u-modal-body {

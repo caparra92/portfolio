@@ -1,6 +1,6 @@
 <template>
     <div class="u-footer">
-        <div class="u-social" :class="{ 'u-social-dark': dark.darkTrigger }">
+        <div class="u-social">
             <a href="https://github.com/caparra92" target="_blank">
                 <img src="@/assets/img/github.svg" alt="github logo">
             </a>
@@ -63,9 +63,9 @@ const dark = useDarkThemeTrigger();
     width: 50px;
 }
 
-.u-social-dark {
+/* .u-social-dark {
     filter: invert(1);
-}
+} */
 
 @media screen and (max-width: 768px) {
     .u-dash {

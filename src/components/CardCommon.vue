@@ -10,7 +10,7 @@
             <div class="u-card-description">
                 <p>{{ description }}</p>
             </div>
-            <div class="u-card-tech" :class="{ 'u-social-dark': dark.darkTrigger }">
+            <div class="u-card-tech">
                 <template v-for="(img, index) in imgTechUrl">
                     <ImgCommon :srcImg="img" :altImg="alt"/>
                 </template>
@@ -85,6 +85,7 @@ const dark = useDarkThemeTrigger();
 }
 
 .u-card-tech {
+    filter: invert(var(--filter-invert));
     display: flex;
     gap: 1rem;
     padding: 0 10px;
@@ -121,9 +122,9 @@ const dark = useDarkThemeTrigger();
     transform: scale(1.1);
 }
 
-.u-social-dark {
+/* .u-social-dark {
     filter: invert(1);
-}
+} */
 
 @media screen and (max-width: 768px) {
     .u-card-container {

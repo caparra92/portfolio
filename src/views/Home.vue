@@ -70,7 +70,7 @@ const dark = useDarkThemeTrigger();
 }
 
 .u-images {
-    /* filter: invert(var(--filter-invert)); */
+    filter: invert(var(--filter-invert));
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

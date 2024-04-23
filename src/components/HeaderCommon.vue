@@ -18,7 +18,7 @@
                     </nav>
                     <div class="u-toggle">
                         <label class="u-switch">
-                            <input type="checkbox" @click="changeTheme" v-model="checked">
+                            <input type="checkbox" @click="changeTheme" v-model="dark.darkTrigger">
                             <span class="u-slider"></span>
                         </label>
                     </div>
@@ -55,6 +55,8 @@ const changeTheme = () => {
         root.value.style.setProperty('--color-link-hover', '#00bd7e33');
         root.value.style.setProperty('--color-border', '#3c3c3c1f');
         root.value.style.setProperty('--color-link-active', '#00bd7e');
+        root.value.style.setProperty('--filter-invert', '0');
+        
     } else {
         root.value.style.setProperty('--color-background', '#282828');
         root.value.style.setProperty('--color-input', '#545454a6');
@@ -62,6 +64,7 @@ const changeTheme = () => {
         root.value.style.setProperty('--color-link-hover', '#ebebeba3');
         root.value.style.setProperty('--color-border', '#545454a6');
         root.value.style.setProperty('--color-link-active', '#ebebeba3');
+        root.value.style.setProperty('--filter-invert', '1');
     }
 };
 

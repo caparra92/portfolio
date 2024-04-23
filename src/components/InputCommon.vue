@@ -15,14 +15,8 @@
 </template>
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-
-interface validationError {
-    type: string,
-    value: string,
-    msg: string,
-    path: string,
-    localtion: string
-}
+import type { PropType } from 'vue';
+import type { validationError } from '@/util/interfaces';
 
 const isValid = ref(false);
 
@@ -38,7 +32,7 @@ const props = defineProps({
     default: "",
   },
   validation: {
-    type: Array,
+    type: Array as PropType<Array<validationError>>,
     default: () => []
   }
 });
@@ -68,4 +62,4 @@ const props = defineProps({
     margin-left: 0;
   }
 }
-</style>
+</style>@/util/interfaces

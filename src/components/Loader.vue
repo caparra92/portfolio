@@ -1,6 +1,6 @@
 <template>
     <Transition class="fade">
-        <div class="u-container">
+        <div class="u-loader-container">
             <div class="u-loader">
                 <span class="u-square"></span>
                 <span class="u-square"></span>
@@ -22,21 +22,18 @@
   opacity: 0;
 }
 
-.u-container {
+.u-loader-container {
     width: 100%;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .u-loader {
-    margin: 0;
-    padding: 0;
     width: 100px;
     height: 100px;
+    margin: auto;
 }
 
 .u-square {

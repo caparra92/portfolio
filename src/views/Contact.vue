@@ -1,10 +1,10 @@
 <template>
-    <div class="u-contact" v-if="pageIsLoaded">
+    <div class="u-contact">
         <div class="u-title">
             <h1>contact</h1>
         </div>
         <div class="u-container">
-            <div class="u-form-container">
+            <div class="u-form-container" v-if="!validationIsPending">
                 <form @submit.prevent="sendEmailMessage">
                     <InputCommon type="text" label="Name" v-model="form.name" :validation="validationMsg"></InputCommon>
                     <InputCommon type="email" label="Email" v-model="form.email" :validation="validationMsg"></InputCommon>
@@ -14,12 +14,12 @@
                     </div>
                 </form>
             </div>
+            <Loader v-else></Loader>
             <div class="u-map-container">
                 <Map></Map>
             </div>
         </div>
     </div>
-    <Loader v-else></Loader>
     <ModalCommon v-if="modalIsOpen" @on:close="closeModal">
         <template v-slot:header>
             <h2 class="u-title">Message sent</h2>
@@ -49,7 +49,7 @@ interface validationError {
     localtion: string
 }
 
-const pageIsLoaded = ref(false);
+const validationIsPending = ref(false);
 const modalIsOpen = ref(false);
 const sendEmail = useSendEmail();
 const form = ref({
@@ -59,10 +59,6 @@ const form = ref({
     });
 
 const validationMsg = ref<validationError[]>([]);
-
-onMounted(() => {
-    pageIsLoaded.value = true;
-});
 
 const openModal = async () => {
         modalIsOpen.value = true;
@@ -74,6 +70,7 @@ const openModal = async () => {
 
 const sendEmailMessage = async() => {
     try {
+        validationIsPending.value = true;
         const { errors } = await sendEmail.sendEmail(form.value.name, form.value.email, form.value.message);
         if (errors.length > 0) {
             validationMsg.value = errors;
@@ -83,7 +80,9 @@ const sendEmailMessage = async() => {
         } 
       } catch (error) {
         throw new Error(`Error: ${error}`);
-      } 
+      } finally {
+            validationIsPending.value = false;
+      }
 }
  
 const clearValues = () => {

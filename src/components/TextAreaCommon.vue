@@ -18,6 +18,9 @@
 </template>
 <script setup lang="ts">
 import { computed } from 'vue';
+import type { PropType } from 'vue';
+import type { validationError } from '@/util/interfaces';
+
 const filteredValidation = computed(() => props.validation.filter((msg) => msg.path.toLowerCase() === props.label.toLowerCase()));
 
 const props = defineProps({
@@ -38,7 +41,7 @@ const props = defineProps({
       default: "5",
     },
     validation: {
-      type: Array,
+      type: Array as PropType<Array<validationError>>,
       default: () => []
     }
 });

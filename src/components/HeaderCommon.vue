@@ -11,10 +11,10 @@
             <transition name="slide-fade">
                 <div class="u-slide-menu" ref="slideMenu" v-show="showSlideMenu">
                     <nav>
-                        <RouterLink to="/">Home</RouterLink>
-                        <RouterLink to="/me">Me</RouterLink>
-                        <RouterLink to="/projects">Projects</RouterLink>
-                        <RouterLink to="/contact">Contact</RouterLink>
+                        <RouterLink to="/" @click="showMenu">Home</RouterLink>
+                        <RouterLink to="/me" @click="showMenu">Me</RouterLink>
+                        <RouterLink to="/projects" @click="showMenu">Projects</RouterLink>
+                        <RouterLink to="/contact" @click="showMenu">Contact</RouterLink>
                     </nav>
                     <div class="u-toggle">
                         <label class="u-switch">

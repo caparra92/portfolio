@@ -60,7 +60,7 @@ const dark = useDarkThemeTrigger();
 }
 
 .u-social img {
-    width: 50px;
+    width: 40px;
 }
 
 /* .u-social-dark {

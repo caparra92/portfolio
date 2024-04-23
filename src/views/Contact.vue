@@ -79,7 +79,7 @@ const sendEmailMessage = async() => {
             clearValues();
         } 
       } catch (error) {
-        throw new Error(`Error: ${error}`);
+            throw new Error(`Error: ${error}`);
       } finally {
             validationIsPending.value = false;
       }

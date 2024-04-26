@@ -26,6 +26,7 @@
     list-style: none;
     position: absolute;
     display: block;
+    opacity: 0;
     width: 4rem;
     height: 4rem;
     background: linear-gradient(-45deg, var(--color-link-active), var(--color-border));

@@ -98,6 +98,7 @@ const changeTheme = () => {
     text-align: left;
     height: 35px;
     position: absolute;
+    z-index: 1;
 }
 
 #toggle {
@@ -154,6 +155,7 @@ const changeTheme = () => {
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
+    z-index: 2;
 }
 
 .slide-fade-enter-active {

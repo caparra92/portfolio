@@ -1,5 +1,6 @@
 <template>
     <div class="u-presentation">
+        <Bubbles></Bubbles>
         <div class="u-title"><h1>Full Stack Web Developer</h1></div>
         <h2>Skills</h2>
         <!-- <div class="u-images-bg"></div> -->
@@ -18,10 +19,12 @@
 </template>
 <script setup lang="ts">
 import { useDarkThemeTrigger } from '@/stores/darkThemeTrigger';
+import Bubbles from '@/components/Bubbles.vue';
 
 const dark = useDarkThemeTrigger();
 </script>
 <style scoped>
+
 .u-presentation {
     display: grid;
     grid-template-rows: 2fr 1fr 1fr;
@@ -30,20 +33,11 @@ const dark = useDarkThemeTrigger();
     text-align: center;
 }
 
-/* .u-images-bg {
-    width: 80%;
-    height: 100px;
-    position: absolute;
-    top: 0;
-    left: 0%;
-    background: linear-gradient(-45deg, var(--color-link-active) 50%, var(--color-border) 50%);
-    filter: blur(44px);
-} */
-
 .u-presentation .u-title {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
 }
 
 .u-presentation h1 {
@@ -52,7 +46,7 @@ const dark = useDarkThemeTrigger();
     margin-top: 3rem;
     /* mix-blend-mode: multiply; */
     position: relative;
-    background: var(--color-background);
+    /* background: var(--color-background); */
 }
 
 .u-presentation h1:before {
@@ -63,10 +57,10 @@ const dark = useDarkThemeTrigger();
     height: 100%;
     top: 0;
     left: 0;
-    background: linear-gradient(to right, var(--color-link-active), var(--color-border));
-    /* background: linear-gradient(-45deg, var(--color-link-active) 50%, var(--color-border) 50%); */
+    /* background: linear-gradient(to right, var(--color-link-active), var(--color-border)); */
+    background: linear-gradient(-45deg, var(--color-link-active) 50%, var(--color-border) 50%);
     filter: blur(44px); 
-    mix-blend-mode: screen;
+    mix-blend-mode: screen; 
 }
 
 .u-images {

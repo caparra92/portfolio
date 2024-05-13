@@ -37,6 +37,7 @@
 
   --color-heading: var(--vt-c-text-light-1);
   --color-text: var(--vt-c-text-light-1);
+  --color-text-light: var(--vt-c-text-light-2);
 
   --color-link-active: var(--vt-c-active);
   --color-btn-hover: var(--vt-c-secondary);
@@ -62,6 +63,7 @@
 
     --color-heading: var(--vt-c-text-dark-1);
     --color-text: var(--vt-c-white);
+    --color-text-light: var(--vt-c-white-soft);
     --color-input: var(--vt-c-divider-dark-1);
     --color-link-hover: var(--vt-c-text-dark-2);
     --color-link-active: var(--vt-c-text-dark-2);

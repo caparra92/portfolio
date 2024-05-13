@@ -40,11 +40,10 @@ import {
         tsImg, 
         vueImg,  
     } from '@/util/assetHandling';
-import { off } from 'process';
 
 interface article {
     title: string,
-    pubDate: string,
+    pubDate: Date | string,
     link: string,
     guid: string,
     author: string,
@@ -58,14 +57,10 @@ const imgUrls = ref<string[]>([]);
 
 const getArticles = useGetArticles();
 
-const summarizedDescription = computed(() => {
-    return 
-})
-
 //const srcImgMatch = articles.value.description.match("/\bhttps?:\/\/\S+/gi");
 
 onMounted(() => {
-    getArticlePosts()
+    getArticlePosts();
     pageIsLoaded.value = true;
 });
 
@@ -74,10 +69,9 @@ const getArticlePosts = async () => {
         const { items } = await getArticles.getArticles(); 
         articles.value = items;
         imgUrls.value = getImgUrlMatches(articles.value);
-        console.log(imgUrls.value);
-        
         populateArticlesURLImg(articles.value)
         summarizeDescription(articles.value);
+        transformPubDate(articles.value);
         console.log(articles.value)
     } catch (error) {
         throw new Error(`Error: ${error}`);
@@ -100,12 +94,36 @@ const summarizeDescription = (articles: article[]) => {
     });
 }
 
+const getMonthName = (monthNum: string) => {
+    const month = monthNum == months[monthNum as keyof typeof months] ? months[monthNum] : "";
+
+    return month;
+}
+
+const transformPubDate = (articles: article[]) => {
+    let fullDate, date, day, month, year = null
+    articles.forEach((article) => {
+        date = new Date(article.pubDate); 
+        day = date.getDate();
+        month = date.toLocaleString('default', {month: 'long'});
+        year = date.getFullYear();
+        // month = month < 10 ? `0${month}`: month;
+
+        fullDate = `${day} ${capitalizeFistLetter(month)} ${year}`;
+        article.pubDate = fullDate;
+    });
+}
+
+const capitalizeFistLetter = (str: string) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 const getImgUrlMatches = (articles: article[]) => {
     let imgUrls: string[] = [];
     let regExArray: RegExpMatchArray | null = null;
     for (const article of articles) {
         regExArray = article.description.match(/(https?:\/\/\S+)(?=")/);
-        imgUrls.push(regExArray[0]); 
+        regExArray ? imgUrls.push(regExArray[0]) : imgUrls.push(""); 
     }
 
     return imgUrls;
@@ -137,5 +155,6 @@ const getImgUrlMatches = (articles: article[]) => {
 
 .u-pub-date {
     padding-left: 10px;
+    color: var(--color-text-light);
 }
 </style>

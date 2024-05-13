@@ -53,6 +53,7 @@ const changeTheme = () => {
         root.value.style.setProperty('--color-background', '#fff');
         root.value.style.setProperty('--color-input', '#f2f2f2');
         root.value.style.setProperty('--color-text', '#2c3e50');
+        root.value.style.setProperty('--color-text-light', 'rgba(60, 60, 60, 0.66)');
         root.value.style.setProperty('--color-link-hover', '#00bd7e33');
         root.value.style.setProperty('--color-border', '#3c3c3c1f');
         root.value.style.setProperty('--color-link-active', '#00bd7e');
@@ -62,6 +63,7 @@ const changeTheme = () => {
         root.value.style.setProperty('--color-background', '#282828');
         root.value.style.setProperty('--color-input', '#545454a6');
         root.value.style.setProperty('--color-text', '#fff');
+        root.value.style.setProperty('--color-text-light', '#f8f8f8');
         root.value.style.setProperty('--color-link-hover', '#ebebeba3');
         root.value.style.setProperty('--color-border', '#545454a6');
         root.value.style.setProperty('--color-link-active', '#ebebeba3');

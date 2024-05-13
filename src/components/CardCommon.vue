@@ -1,12 +1,13 @@
 <template>
     <div class="u-card-container">
         <div class="u-card-image">
-            <ImgCommon :srcImg="srcImg" altImg="Landing page template"/>
+            <ImgCommon :srcImg="srcImg" :altImg="alt"/>
         </div>
         <div class="u-card-body">
-            <div class="u-card-title">
+            <div class="u-card-title" :class="{'u-align-left' : titleAlignLeft}">
                 <h3>{{ cardTitle }}</h3>
             </div>
+            <slot class="u-card-pub-date"></slot>
             <div class="u-card-description">
                 <p>{{ description }}</p>
             </div>
@@ -38,7 +39,8 @@ const dark = useDarkThemeTrigger();
         alt?: string,
         imgTechUrl?: Array<string>,
         urlProject: Array<string> | string,
-        action?: Array<string> | string
+        action?: Array<string> | string,
+        titleAlignLeft?: boolean
     }>()
 
 </script>
@@ -66,13 +68,22 @@ const dark = useDarkThemeTrigger();
 .u-card-body {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    gap: 1rem;
     padding: 10px;
     margin-left: 10px;
 }
 
 .u-card-title {
     text-align: center;
+}
+
+.u-align-left {
+    text-align: left;
+    margin-left: 10px;
+}
+
+.u-card-pub-date {
+    padding-left: 10px;
 }
 
 .u-card-title h3 {

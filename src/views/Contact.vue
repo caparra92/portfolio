@@ -3,6 +3,7 @@
         <div class="u-title">
             <h1>contact</h1>
         </div>
+        <p>Feel free to send me an email or use the following form to send a message. All fields are mandatory. Meanwhile, you can also check the attached map where I have marked my last work experience locations (Canada, Colombia, Brazil).</p>
         <div class="u-container">
             <div class="u-form-container" v-if="!validationIsPending">
                 <form @submit.prevent="sendEmailMessage">
@@ -99,6 +100,10 @@ const clearValues = () => {
     margin-top: 2rem;
 }
 
+.u-contact p {
+    padding: 1rem;
+}
+
 .u-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -176,6 +181,10 @@ const clearValues = () => {
         display: grid;
         grid-template-columns: 3fr 1fr;
         gap: 2rem;
+    }
+
+    .u-contact p {
+        padding: 0;
     }
 }
 </style>

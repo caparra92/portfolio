@@ -94,12 +94,6 @@ const summarizeDescription = (articles: article[]) => {
     });
 }
 
-const getMonthName = (monthNum: string) => {
-    const month = monthNum == months[monthNum as keyof typeof months] ? months[monthNum] : "";
-
-    return month;
-}
-
 const transformPubDate = (articles: article[]) => {
     let fullDate, date, day, month, year = null
     articles.forEach((article) => {
@@ -109,12 +103,12 @@ const transformPubDate = (articles: article[]) => {
         year = date.getFullYear();
         // month = month < 10 ? `0${month}`: month;
 
-        fullDate = `${day} ${capitalizeFistLetter(month)} ${year}`;
+        fullDate = `${day} ${capitalizeFirstLetter(month)} ${year}`;
         article.pubDate = fullDate;
     });
 }
 
-const capitalizeFistLetter = (str: string) => {
+const capitalizeFirstLetter = (str: string) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 

@@ -67,7 +67,7 @@ const mapOptions = {
     container: 'mapContainer',
     style: mapStyle.value,
     center: [-75.75321237158144, 45.350272408333176],
-    zoom: 3,
+    zoom: 13,
     trackResize: false
 }
 
@@ -122,13 +122,6 @@ const verifyMarkersPosition = (map, event: string, markers: Array) => {
         }
     });
 }
-
-// const flyToMapLocation = (map, feature) => {
-//     map.flyTo({
-//         center: feature.geometry.coordinates,
-//         essential: true
-//     });
-// }
     
 onMounted(() => {
     const map  = new mapboxgl.Map(mapOptions);

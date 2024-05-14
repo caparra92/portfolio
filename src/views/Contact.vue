@@ -98,6 +98,7 @@ const clearValues = () => {
 
 .u-contact {
     margin-top: 2rem;
+    overflow: hidden;
 }
 
 .u-contact p {

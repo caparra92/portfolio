@@ -1,5 +1,12 @@
 <template>
-    <div ref="mapContainer" class="u-map-container" id="mapContainer"></div>
+    <div class="u-map-container">
+        <div class="u-fly-buttons">
+            <span class="u-fly">Canada</span> |
+            <span class="u-fly">Colombia</span> |
+            <span class="u-fly">Brazil</span>
+        </div>
+        <div ref="mapContainer" class="u-map-container" id="mapContainer"></div>
+    </div>
 </template>
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
@@ -68,7 +75,8 @@ let mapClone = null;
 
 const createMapMarkers = (map) => {
     const markers = [];
-    for (const feature of geojson.features) {
+    const flyButtons = document.querySelectorAll('.u-fly');
+    geojson.features.forEach((feature, index) => {
         const el = document.createElement('div');
         el.className = 'marker';
 
@@ -79,51 +87,18 @@ const createMapMarkers = (map) => {
 
             .addTo(map);
         markers.push(marker);
-        
-    }
+
+        flyButtons[index].addEventListener("click", function(){    
+            map.flyTo({
+                center: feature.geometry.coordinates,
+                essential: true
+            });
+        })
+    });
 
     verifyMarkersPosition(map, 'render', markers);
     verifyMarkersPosition(map, 'drag', markers);
     verifyMarkersPosition(map, 'zoom', markers);
-    // map.on('drag', () => {
-    //     for (const marker of markers) {
-    //         const pos = marker.getLngLat();
-    //         const markerCoords = map.project(pos);
-
-    //         if (
-    //             markerCoords.x < 0 ||
-    //             markerCoords.x > map.getCanvas().clientWidth ||
-    //             markerCoords.y < 0 ||
-    //             markerCoords.y > map.getCanvas().clientHeight
-    //         ) {
-                
-    //             marker.getElement().style.display = 'none';
-    //         } else {
-                
-    //             marker.getElement().style.display = 'block';
-    //         }
-    //     }
-    // });
-
-    // map.on('zoom', () => {
-    //     for (const marker of markers) {
-    //         const pos = marker.getLngLat();
-    //         const markerCoords = map.project(pos);
-
-    //         if (
-    //             markerCoords.x < 0 ||
-    //             markerCoords.x > map.getCanvas().clientWidth ||
-    //             markerCoords.y < 0 ||
-    //             markerCoords.y > map.getCanvas().clientHeight
-    //         ) {
-                
-    //             marker.getElement().style.display = 'none';
-    //         } else {
-                
-    //             marker.getElement().style.display = 'block';
-    //         }
-    //     }
-    // });
 };
 
 const verifyMarkersPosition = (map, event: string, markers: Array) => {
@@ -147,6 +122,13 @@ const verifyMarkersPosition = (map, event: string, markers: Array) => {
         }
     });
 }
+
+// const flyToMapLocation = (map, feature) => {
+//     map.flyTo({
+//         center: feature.geometry.coordinates,
+//         essential: true
+//     });
+// }
     
 onMounted(() => {
     const map  = new mapboxgl.Map(mapOptions);
@@ -162,6 +144,11 @@ watch(darkTrigger, (newValue) => {
 
 </script>
 <style scoped>
+
+.u-map-container {
+    display: grid;
+    gap: 1rem;
+}
 .marker {
   /* background-image: url('../assets/img/mapbox-icon.png'); */
   background-size: cover;
@@ -179,5 +166,13 @@ watch(darkTrigger, (newValue) => {
 .mapboxgl-popup-content {
   text-align: center;
   font-family: 'Roboto', sans-serif;
+}
+
+.u-fly {
+    cursor: pointer;
+}
+
+.u-fly:hover {
+    color: var(--color-link-active);
 }
 </style>

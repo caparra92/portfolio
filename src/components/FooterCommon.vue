@@ -27,12 +27,15 @@ const dark = useDarkThemeTrigger();
 <style scoped>
 .u-footer {
     display: flex;
+    /* position: relative; */
+    /* left: 50%; */
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
     padding: 2rem;
     margin-top: 20px;
+    z-index: 99;
 }
 
 .u-sign {

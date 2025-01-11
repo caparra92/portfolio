@@ -14,7 +14,6 @@ import { ref, onMounted, watch } from 'vue';
 import mapboxgl from 'mapbox-gl';
 
 import { useDarkThemeTrigger } from '@/stores/darkThemeTrigger';
-import { stringify } from 'querystring';
 
 const dark = useDarkThemeTrigger();
 
@@ -71,10 +70,10 @@ const mapOptions = {
     trackResize: false
 }
 
-let mapClone = null;
+let mapClone: mapboxgl = null;
 
-const createMapMarkers = (map) => {
-    const markers = [];
+const createMapMarkers = (map: mapboxgl) => {
+    const markers: Array<mapboxgl.Marker> = [];
     const flyButtons = document.querySelectorAll('.u-fly');
     geojson.features.forEach((feature, index) => {
         const el = document.createElement('div');
@@ -101,7 +100,7 @@ const createMapMarkers = (map) => {
     verifyMarkersPosition(map, 'zoom', markers);
 };
 
-const verifyMarkersPosition = (map, event: string, markers: Array) => {
+const verifyMarkersPosition = (map: mapboxgl, event: string, markers: Array<mapboxgl.Marker>) => {
     map.on(event, () => {
         for (const marker of markers) {
             const pos = marker.getLngLat();

@@ -12,6 +12,7 @@
 <script setup lang="ts">
 </script>
 <style scoped>
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s ease;
@@ -23,26 +24,31 @@
 }
 
 .u-loader-container {
-    width: 100%;
-    height: 100%;
+    /* position: absolute;
+    margin: auto; 
+    padding: 0; */
+    /* left: 50%; */
+    /* width: 80%; */
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 999;
 }
 
 .u-loader {
-    width: 100px;
-    height: 100px;
+    width: var(--square-container-width);
+    height: var(--square-container-height);
     margin: auto;
 }
 
 .u-square {
     display: inline-block;
-    width: 40px;
-    height: 40px;
-    margin: 4px;
+    width: var(--square-size);
+    height: var(--square-size);
+    margin: var(--square-margin);
     background: var(--color-link-active);
-    border-radius: 5px;
+    border-radius: var(--square-radius);
 }
 
 .u-loader span:nth-child(1) {
@@ -61,19 +67,15 @@
     0% {
         transform: translate(0, 0);
     }
-
     25% {
-        transform: translate(0, 53px);
+        transform: translate(0, var(--square-gap));
     }
-
     50% {
-        transform: translate(53px, 53px);
+        transform: translate(var(--square-gap), var(--square-gap));
     }
-
     75% {
-        transform: translate(53px, 0);
+        transform: translate(var(--square-gap), 0);
     }
-
     100% {
         transform: translate(0, 0);
     }
@@ -83,19 +85,15 @@
     0% {
         transform: translate(0, 0);
     }
-
     25% {
-        transform: translate(53px, 0);
+        transform: translate(var(--square-gap), 0);
     }
-
     50% {
-        transform: translate(53px, -53px);
+        transform: translate(var(--square-gap), calc(-1 * var(--square-gap)));
     }
-
     75% {
-        transform: translate(0, -53px);
+        transform: translate(0, calc(-1 * var(--square-gap)));
     }
-
     100% {
         transform: translate(0, 0);
     }
@@ -105,21 +103,18 @@
     0% {
         transform: translate(0, 0);
     }
-
     25% {
-        transform: translate(-53px, 0);
+        transform: translate(calc(-1 * var(--square-gap)), 0);
     }
-
     50% {
-        transform: translate(-53px, 53px);
+        transform: translate(calc(-1 * var(--square-gap)), var(--square-gap));
     }
-
     75% {
-        transform: translate(0, 53px);
+        transform: translate(0, var(--square-gap));
     }
-
     100% {
         transform: translate(0, 0);
     }
 }
+
 </style>

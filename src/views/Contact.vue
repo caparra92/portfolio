@@ -1,5 +1,5 @@
 <template>
-    <div class="u-contact">
+    <div class="u-contact" v-if="pageIsLoaded">
         <div class="u-title">
             <h1>contact</h1>
         </div>
@@ -49,6 +49,12 @@ interface validationError {
     path: string,
     localtion: string
 }
+
+onMounted(() => {
+    pageIsLoaded.value = true;
+});
+
+const pageIsLoaded = ref(false);
 
 const validationIsPending = ref(false);
 const modalIsOpen = ref(false);

@@ -1,5 +1,5 @@
 <template>
-    <div class="u-about">
+    <div class="u-about" v-if="pageIsLoaded">
         <div class="u-title">
             <h1>about</h1>
         </div>
@@ -12,15 +12,22 @@
             <p class="u-description-detail">I was born in 1992 in Pasto city of Colombia. I obtained my degree in computer science and education
                 in my home country and, after finishing my degree I began working in IT. Now Currently, I'm based in Ottawa, Canada,
                 taking web development studies and seeking for continuing my career at the same time.
-                I’m very passionate with sports. I practice capoeira and jiu-jitsu few years ago and I really enjoy teaching
+                I love sports. I practice capoeira and jiu-jitsu few years ago and I really enjoy teaching
                 and sharing all I have learnt with the tech community, you can follow me or check my blog posts out on medium.</p>
         </div>
     </div>
 </template>
 <script setup lang="ts">
+import { ref, onMounted } from 'vue';
 import { useDarkThemeTrigger } from '@/stores/darkThemeTrigger';
+import Loader from '@/components/Loader.vue';
+
+onMounted(() => {
+    pageIsLoaded.value = true;
+});
 
 const dark = useDarkThemeTrigger();
+const pageIsLoaded = ref(false);
 
 </script>
 <style scoped>

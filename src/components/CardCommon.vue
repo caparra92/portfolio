@@ -1,5 +1,5 @@
 <template>
-    <div class="u-card-container">
+    <div class="u-card-container" ref="cardContainer">
         <div class="u-card-image">
             <ImgCommon :srcImg="srcImg" :altImg="alt"/>
         </div>
@@ -11,7 +11,9 @@
             <div class="u-card-description">
                 <p>{{ description }}</p>
             </div>
-            <div class="u-card-tech">
+            <slot name="tags">
+            </slot>
+            <div class="u-card-tech" v-if="imgTechUrl">
                 <template v-for="(img, index) in imgTechUrl">
                     <ImgCommon :srcImg="img" :altImg="alt"/>
                 </template>
@@ -27,8 +29,14 @@
 </template>
 <script setup lang="ts">
 import ImgCommon from './ImgCommon.vue';
+import { onMounted, ref } from 'vue';
 
 import { useDarkThemeTrigger } from '@/stores/darkThemeTrigger';
+
+onMounted(() => {
+    
+});
+
 
 const dark = useDarkThemeTrigger();
 
@@ -45,9 +53,48 @@ const dark = useDarkThemeTrigger();
 
 </script>
 <style scoped>
+/* .u-scroll-enter {
+    visibility: visible !important;
+    animation: bounceInRight 1s linear;
+} */
+
+@keyframes bounceInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(2000px);
+  }
+
+  60% {
+    transform: translateX(-20px);
+  }
+
+  80% {
+    transform: translateX(5px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* .u-card-container:nth-child(1) {
+    visibility: visible;
+    animation: none;
+} 
+.u-card-container:nth-child(2) {
+    animation-delay: .5s;
+} 
+
+.u-card-container:nth-child(3) {
+    animation-delay: 1s;
+}  */
+
+
 .u-card-container {
-    margin: auto;
+    /* visibility: hidden; */
     display: grid;
+    margin: auto;
     justify-content: center;
     grid-template-columns: 1fr 1fr;
     width: 70%;

@@ -37,6 +37,7 @@
                 :urlProject="'https://github.com/caparra92/tareas-console'"
             />
         </div>
+        <!-- <Loader v-else></Loader> -->
     </div>
 </template>
 

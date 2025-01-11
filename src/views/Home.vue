@@ -27,10 +27,12 @@ const dark = useDarkThemeTrigger();
 
 .u-presentation {
     display: grid;
+    /* position: relative; */
     grid-template-rows: 2fr 1fr 1fr;
     justify-content: center;
     align-items: center;
     text-align: center;
+    z-index: 99;
 }
 
 .u-presentation .u-title {

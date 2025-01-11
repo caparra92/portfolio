@@ -6,9 +6,7 @@ import FooterCommon from './components/FooterCommon.vue';
 import Loader from './components/Loader.vue';
 
 onMounted(() => {
-    setTimeout(() => {
-      pageIsLoaded.value = true;
-    }, 2000);
+    pageIsLoaded.value = true;
 });
 
 const pageIsLoaded = ref(false);

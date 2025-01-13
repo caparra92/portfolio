@@ -17,8 +17,8 @@ const pageIsLoaded = ref(false);
   <HeaderCommon />
   <div>
     <Transition name="slide-fade">
-      <Loader v-if="!pageIsLoaded" />
-      <RouterView  v-else/>
+      <!-- <Loader v-if="!pageIsLoaded" /> -->
+      <RouterView/>
     </Transition>
     <FooterCommon />
   </div>

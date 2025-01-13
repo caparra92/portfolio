@@ -3,41 +3,44 @@
         <div class="u-title">
             <h1>projects</h1>
         </div>
-        <div class="u-card-projects">
-            <CardCommon
-                :action="'code'" 
-                cardTitle="Portfolio" 
-                description="Single Page Application portfolio made with Vue.js and Typescript"
-                :srcImg="portfolioImg"
-                altImg="Portfolio frame" 
-                :imgTechUrl="[
-                            vueImg,
-                            tsImg,
-                            html5Img,
-                            css3Img
-                            ]" 
-                :urlProject="'https://github.com/caparra92/portfolio'"
-            />
-            <CardCommon
-                :action="['demo','code']" 
-                cardTitle="Landing Template" 
-                description="Responsive layout for mobile, tablet and desktop devices"
-                :srcImg="landingImg"
-                altImg="Landing page"
-                :imgTechUrl="[html5Img,css3Img]"
-                :urlProject="['https://parr0124-landing001.netlify.app','https://parr0124-landing001.netlify.app']"
-            />
-            <CardCommon
-                :action="'code'"
-                cardTitle="TO DO Terminal app" 
-                description="TO DO command line application made with node.js and yargs"
-                :srcImg="yargsImg" 
-                altImg="TO DO command line"
-                :imgTechUrl="[jsImg,nodeImg]"
-                :urlProject="'https://github.com/caparra92/tareas-console'"
-            />
-        </div>
-        <!-- <Loader v-else></Loader> -->
+        <Transition name="slide-fade">
+
+            <Loader v-if="!pageIsLoaded"></Loader>
+            <div class="u-card-projects" v-else>
+                <CardCommon
+                    :action="'code'" 
+                    cardTitle="Portfolio" 
+                    description="Single Page Application portfolio made with Vue.js and Typescript"
+                    :srcImg="portfolioImg"
+                    altImg="Portfolio frame" 
+                    :imgTechUrl="[
+                                vueImg,
+                                tsImg,
+                                html5Img,
+                                css3Img
+                                ]" 
+                    :urlProject="'https://github.com/caparra92/portfolio'"
+                />
+                <CardCommon
+                    :action="['demo','code']" 
+                    cardTitle="Landing Template" 
+                    description="Responsive layout for mobile, tablet and desktop devices"
+                    :srcImg="landingImg"
+                    altImg="Landing page"
+                    :imgTechUrl="[html5Img,css3Img]"
+                    :urlProject="['https://parr0124-landing001.netlify.app','https://parr0124-landing001.netlify.app']"
+                />
+                <CardCommon
+                    :action="'code'"
+                    cardTitle="TO DO Terminal app" 
+                    description="TO DO command line application made with node.js and yargs"
+                    :srcImg="yargsImg" 
+                    altImg="TO DO command line"
+                    :imgTechUrl="[jsImg,nodeImg]"
+                    :urlProject="'https://github.com/caparra92/tareas-console'"
+                />
+            </div>
+        </Transition>
     </div>
 </template>
 
@@ -89,5 +92,19 @@ onMounted(() => {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+}
+
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
 }
 </style>

@@ -1,5 +1,6 @@
 <template>
-    <div class="u-about" v-if="pageIsLoaded">
+    <Loader v-if="!pageIsLoaded"></Loader>
+    <div class="u-about" v-else>
         <div class="u-title">
             <h1>about</h1>
         </div>

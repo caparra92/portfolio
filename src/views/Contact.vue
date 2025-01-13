@@ -1,5 +1,6 @@
 <template>
-    <div class="u-contact" v-if="pageIsLoaded">
+    <Loader v-if="!pageIsLoaded"></Loader>
+    <div class="u-contact" v-else>
         <div class="u-title">
             <h1>contact</h1>
         </div>
@@ -15,7 +16,6 @@
                     </div>
                 </form>
             </div>
-            <Loader v-else></Loader>
             <div class="u-map-container">
                 <Map></Map>
             </div>

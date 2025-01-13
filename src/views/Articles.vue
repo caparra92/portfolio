@@ -3,29 +3,31 @@
         <div class="u-title">
             <h1>articles</h1>
         </div>
-        <div class="u-card-projects" v-if="pageIsLoaded" @scroll="enterOnScroll">
-            <template v-for="article in articles" :key="article.guid">
-                <CardCommon
-                    :action="'read more'" 
-                    :cardTitle="article.title" 
-                    :description="article.description"
-                    :srcImg="article.thumbnail"
-                    :altImg="article.title" 
-                    :urlProject="article.link"
-                    :titleAlignLeft="true"
-                >
-                    <div class="u-pub-date"><span>{{ article.pubDate }}</span></div>
-                    <template v-slot:tags>
-                        <div class="u-pub-date u-tag-container">
-                            <div class="u-tag-shape" v-for="tag in article.categories" :key="tag" >
-                                <span class="u-tag">{{ tag }}</span>
+        <Transition name="slide-fade">
+            <Loader v-if="!pageIsLoaded"></Loader>
+            <div class="u-card-projects" v-else>
+                <template v-for="article in articles" :key="article.guid">
+                    <CardCommon
+                        :action="'read more'" 
+                        :cardTitle="article.title" 
+                        :description="article.description"
+                        :srcImg="article.thumbnail"
+                        :altImg="article.title" 
+                        :urlProject="article.link"
+                        :titleAlignLeft="true"
+                    >
+                        <div class="u-pub-date"><span>{{ article.pubDate }}</span></div>
+                        <template v-slot:tags>
+                            <div class="u-pub-date u-tag-container">
+                                <div class="u-tag-shape" v-for="tag in article.categories" :key="tag" >
+                                    <span class="u-tag">{{ tag }}</span>
+                                </div>
                             </div>
-                        </div>
-                    </template>
-                </CardCommon>
-            </template>
-        </div>
-        <!-- <Loader v-else></Loader> -->
+                        </template>
+                    </CardCommon>
+                </template>
+            </div>
+        </Transition>
     </div>
 </template>
 
@@ -57,28 +59,9 @@ const getArticles = useGetArticles();
 //const srcImgMatch = articles.value.description.match("/\bhttps?:\/\/\S+/gi");
 
 const cardContainer = ref<HTMLElement | null>(null);
-const enterOnScroll = () => {
-    console.log("User is scrolling");
-    
-    const observer = new IntersectionObserver(
-        (entries, observer) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-            entry.target.classList.add('u-scroll-enter');
-            observer.unobserve(entry.target); // Stop observing once the animation is applied
-            }
-        });
-        },
-        { threshold: 0.1 } // Trigger when 10% of the element is visible
-  );
-
-  // Observe all cards
-  const cards = cardContainer.value?.querySelectorAll('.u-card-container');
-  cards?.forEach((card) => observer.observe(card));
-};
 
 onMounted(() => {
-    enterOnScroll();
+    // enterOnScroll();
     getArticlePosts();
     pageIsLoaded.value = true;
 });
@@ -208,5 +191,19 @@ const getImgUrlMatches = (articles: article[]) => {
     width: 3px;
     top: 0;
     right: -10px;
+}
+
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
 }
 </style>

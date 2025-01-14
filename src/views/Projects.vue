@@ -7,41 +7,41 @@
         <!-- <Loader v-else></Loader> -->
         <Transition name="slide-fade">
 
-        <Loader v-if="!pageIsLoaded"></Loader>
-        <div class="u-card-projects">
-            <CardCommon
-                :action="'code'"
-                cardTitle="Statistics App" 
-                description="Mobile app made with vue + ionic to save statistics of different activities and show graph of their progress (Ex Show weekly progress in push ups through a pie chart)."
-                :srcImg="followingImg" 
-                altImg="Statistics mobile app"
-                :imgTechUrl="[ionicImg,vueImg, nodeImg]"
-                :urlProject="'https://github.com/caparra92/following-app-front'"
-            />
-            <CardCommon
-                :action="'code'" 
-                cardTitle="Portfolio" 
-                description="Single Page Application portfolio made with Vue.js and Typescript"
-                :srcImg="portfolioImg"
-                altImg="Portfolio frame" 
-                :imgTechUrl="[
-                            vueImg,
-                            tsImg,
-                            html5Img,
-                            css3Img
-                            ]" 
-                :urlProject="'https://github.com/caparra92/portfolio'"
-            />
-            <CardCommon
-                :action="['demo','code']" 
-                cardTitle="Landing Template" 
-                description="Responsive layout for mobile, tablet and desktop devices"
-                :srcImg="landingImg"
-                altImg="Landing page"
-                :imgTechUrl="[html5Img,css3Img]"
-                :urlProject="['https://parr0124-landing001.netlify.app','https://parr0124-landing001.netlify.app']"
-            />
-        </div>
+            <Loader v-if="!pageIsLoaded"></Loader>
+            <div class="u-card-projects" v-else>
+                <CardCommon
+                    :action="'code'"
+                    cardTitle="Statistics App" 
+                    description="Mobile app made with vue + ionic to save statistics of different activities and show graph of their progress (Ex Show weekly progress in push ups through a pie chart)."
+                    :srcImg="followingImg" 
+                    altImg="Statistics mobile app"
+                    :imgTechUrl="[ionicImg,vueImg, nodeImg]"
+                    :urlProject="'https://github.com/caparra92/following-app-front'"
+                />
+                <CardCommon
+                    :action="'code'" 
+                    cardTitle="Portfolio" 
+                    description="Single Page Application portfolio made with Vue.js and Typescript"
+                    :srcImg="portfolioImg"
+                    altImg="Portfolio frame" 
+                    :imgTechUrl="[
+                                vueImg,
+                                tsImg,
+                                html5Img,
+                                css3Img
+                                ]" 
+                    :urlProject="'https://github.com/caparra92/portfolio'"
+                />
+                <CardCommon
+                    :action="['demo','code']" 
+                    cardTitle="Landing Template" 
+                    description="Responsive layout for mobile, tablet and desktop devices"
+                    :srcImg="landingImg"
+                    altImg="Landing page"
+                    :imgTechUrl="[html5Img,css3Img]"
+                    :urlProject="['https://parr0124-landing001.netlify.app','https://parr0124-landing001.netlify.app']"
+                />
+            </div>
         </Transition>
     </div>
 </template>

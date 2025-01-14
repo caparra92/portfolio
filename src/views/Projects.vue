@@ -5,6 +5,15 @@
         </div>
         <div class="u-card-projects">
             <CardCommon
+                :action="'code'"
+                cardTitle="Statistics App" 
+                description="Mobile app made with vue + ionic to save statistics of different activities and show graph of their progress (Ex Show weekly progress in push ups through a pie chart)."
+                :srcImg="followingImg" 
+                altImg="Statistics mobile app"
+                :imgTechUrl="[ionicImg,vueImg, nodeImg]"
+                :urlProject="'https://github.com/caparra92/following-app-front'"
+            />
+            <CardCommon
                 :action="'code'" 
                 cardTitle="Portfolio" 
                 description="Single Page Application portfolio made with Vue.js and Typescript"
@@ -27,15 +36,6 @@
                 :imgTechUrl="[html5Img,css3Img]"
                 :urlProject="['https://parr0124-landing001.netlify.app','https://parr0124-landing001.netlify.app']"
             />
-            <CardCommon
-                :action="'code'"
-                cardTitle="TO DO Terminal app" 
-                description="TO DO command line application made with node.js and yargs"
-                :srcImg="yargsImg" 
-                altImg="TO DO command line"
-                :imgTechUrl="[jsImg,nodeImg]"
-                :urlProject="'https://github.com/caparra92/tareas-console'"
-            />
         </div>
         <!-- <Loader v-else></Loader> -->
     </div>
@@ -52,13 +52,13 @@ import { useRoute } from 'vue-router';
 import { 
         css3Img, 
         html5Img, 
-        jsImg, 
         nodeImg,
         landingImg,  
         portfolioImg, 
         tsImg, 
         vueImg, 
-        yargsImg 
+        ionicImg, 
+        followingImg
     } from '@/util/assetHandling';
     
 const pageIsLoaded = ref(false);

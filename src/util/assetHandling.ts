@@ -12,8 +12,8 @@ import tsImg from '@/assets/img/ts.svg';
 import vueImg from '@/assets/img/vue.svg';
 import landingImg from '@/assets/img/landing.svg';
 import portfolioImg from '@/assets/img/portfolio.svg';
-import yargsImg from '@/assets/img/yargs.svg';
-
+import ionicImg from '@/assets/img/ionic.svg';
+import followingImg from '@/assets/img/following.svg';
 export {
     cSharpImg,
     css3Img,
@@ -29,5 +29,6 @@ export {
     vueImg,
     landingImg,
     portfolioImg,
-    yargsImg
+    ionicImg,
+    followingImg
 }

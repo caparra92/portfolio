@@ -19,18 +19,16 @@
                     :urlProject="'https://github.com/caparra92/following-app-front'"
                 />
                 <CardCommon
-                    :action="'code'" 
-                    cardTitle="Portfolio" 
-                    description="Single Page Application portfolio made with Vue.js and Typescript"
-                    :srcImg="portfolioImg"
-                    altImg="Portfolio frame" 
+                    :action="'demo'"  
+                    cardTitle="BodyBliss" 
+                    description="Empower women to build healthy habits, find balance, and embrace confidence without restrictive diets or extremes."
+                    :srcImg="bodyblissImg"
+                    altImg="Bodybliss frame" 
                     :imgTechUrl="[
-                                vueImg,
-                                tsImg,
                                 html5Img,
                                 css3Img
                                 ]" 
-                    :urlProject="'https://github.com/caparra92/portfolio'"
+                    :urlProject="'https://www.bodyblissliz.com'"
                 />
                 <CardCommon
                     :action="['demo','code']" 
@@ -63,7 +61,8 @@ import {
         tsImg, 
         vueImg, 
         ionicImg, 
-        followingImg
+        followingImg,
+        bodyblissImg
     } from '@/util/assetHandling';
     
 const pageIsLoaded = ref(false);

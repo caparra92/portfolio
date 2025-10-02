@@ -14,6 +14,7 @@ import landingImg from '@/assets/img/landing.svg';
 import portfolioImg from '@/assets/img/portfolio.svg';
 import ionicImg from '@/assets/img/ionic.svg';
 import followingImg from '@/assets/img/following.svg';
+import bodyblissImg from '@/assets/img/bodybliss.svg';
 export {
     cSharpImg,
     css3Img,
@@ -30,5 +31,6 @@ export {
     landingImg,
     portfolioImg,
     ionicImg,
-    followingImg
+    followingImg,
+    bodyblissImg
 }
